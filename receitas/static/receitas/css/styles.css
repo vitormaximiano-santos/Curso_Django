@@ -157,6 +157,7 @@ h6 {
 
 .Receitas-list-item {
   max-width: 64rem;
+  height: fit-content;
 }
 
 .Receitas-list-item:hover {
