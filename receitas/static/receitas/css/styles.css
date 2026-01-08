@@ -99,7 +99,7 @@ h6 {
 }
 
 .search-input,
-.search-buttom {
+.search-button {
   border: none;
   background: none;
   outline: none;
@@ -107,30 +107,44 @@ h6 {
   transition: all 300ms ease-in-out;
 }
 
-.search-input {
-  width: 100%;
-  padding-right: 3rem;
-}
-
-.search-buttom {
+.search-button {
   position: absolute;
   right: 0;
   top: 0;
 }
 
-.search-buttom:focus {
+.search-button:focus {
   outline: 1px solid var(--color-primary);
   background: rgba(0, 0, 0, 0.6);
 }
 
-.search-form:focus-within {
+.search-form:focus-within .search-button {
   border-color: var(--color-primary);
-  background: var(--color-white);
+}
+.search-input,
+.search-button {
+  border: none;
+  background: none;
+  outline: none;
+  padding: 1rem;
+  transition: all 300ms ease-in-out;
 }
 
-.search-form:focus-within .search-buttom {
+.search-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.search-button:focus {
+  outline: 1px solid var(--color-primary);
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.search-form:focus-within .search-button {
   border-color: var(--color-primary);
 }
+
 
 .main-content {
   padding-top: 0;
@@ -171,11 +185,9 @@ h6 {
   padding-bottom: 2rem;
 }
 
-.Receitas-title-container a {
-  text-decoration: none;
-  color: var(--color-dark-text);
-  transition: all 300ms ease-in-out;
-}
+.Receitas-title-container a 
+{ text-decoration: none; color: var(--color-primary);
+ transition: all 300ms ease-in-out;   }
 
 
 .Receitas-author {
@@ -248,14 +260,20 @@ h6 {
 
 /* Página de detalhe */
 .main-content-detail .Receitas-list-item {
-  max-width: 84rem;
   margin: 0 auto;
-  justify-items: center;
 }
+
 
 .main-content-detail .Receitas-list-item:hover {
   transform: scale(1);
   box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.main-content-detail .Receitas-cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;   /* garante que a imagem preencha sem distorcer */
 }
 
 .preparation_steps {

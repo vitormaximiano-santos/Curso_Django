@@ -1,5 +1,10 @@
 from django.apps import AppConfig
 
-
 class ReceitasConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
     name = 'receitas'
+    verbose_name = 'Receitas'
+
+    def ready(self):
+        # Importar signals ou inicializações específicas do app
+        pass

@@ -6,19 +6,15 @@
     <title>{% block title %}{% endblock title %} Receitas</title>
 </head>
 
-{% include 'receitas/Partials/Head.html' %}
-
 <body>
     {% include 'receitas/Partials/Header.html' %}
     {% include 'receitas/Partials/Search.html' %}
 
     <main class="main-content-container">
-       {% block content %}`{% endblock %}`
-        </div>
-
+       {% block content %}{% endblock content %}
     </main>
 
-      {% include 'receitas/Partials/Footer.html' %}
+    {% include 'receitas/Partials/Footer.html' %}
 </body>
 
 </html>
