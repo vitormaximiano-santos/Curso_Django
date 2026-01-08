@@ -6,7 +6,10 @@ def Home(request):
         'receitas':[make_receitas() for _ in range(10)]
     })
 
-def Receita(request,id):
-    return render(request, 'receitas/Pages/Receitas-view.html',context={
-    'receitas':make_receitas()
+def Receita(request, id):
+    receita = make_receitas()
+    receita['id'] = id  # força o id da URL
+    return render(request, 'receitas/Pages/Receitas-view.html', context={
+        'receita': receita,
+        'is_detail_page': True
     })

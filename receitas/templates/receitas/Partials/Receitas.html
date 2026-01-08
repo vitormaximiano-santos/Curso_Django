@@ -1,9 +1,15 @@
 <div class="Receitas Receitas-list-item">
   <div class="Receitas-cover">
-    <img src="{{ receita.cover.url }}" alt="Temporário">
+    <a href="{% url 'receita:receita' receita.id %}">
+    <img src="{{ receita.cover.url }}" alt="Temporário" />
   </div>
+
   <div class="Receitas-title-container">
-    <h2 class="Receitas-title">Lorem ipsum dolor sit amet.</h2>
+    <h2 class="Receitas-title">
+      <a href="{% url 'receita:receita' receita.id %}">
+      {{ receita.title }}
+      </a>
+    </h2>
   </div>
 
   <div class="Receitas-author">
@@ -13,20 +19,18 @@
     </span>
     <span class="Receitas-author-item">
       <i class="fas fa-calendar-alt"></i>
-      {{ receita.created_at|date:"d/m/Y" }} às {{ receita.created_at|date:"H:i"
-      }}
+      {{ receita.created_at|date:"d/m/Y" }} às {{ receita.created_at|date:"H:i" }}
     </span>
-
     <span class="Receitas-author-item">
       <a href="/Receitas/category/{{ receita.category.name }}/">
         <i class="fas fa-layer-group"></i>
-        <span></span>
+        <span>{{ receita.category.name }}</span>
       </a>
     </span>
   </div>
 
   <div class="Receitas-content">
-     <p>{{ receita.description }}</p>
+    <p>{{ receita.description }}</p>
   </div>
 
   <div class="Receitas-meta-container">
@@ -34,25 +38,34 @@
       <h3 class="Receitas-meta-title">
         <i class="fas fa-stopwatch"></i> Preparo
       </h3>
-      <div class="Receitas-meta-text">{{ receita.preparation_time }}
-        {{ receita.preparation_time_unit }} Minutos</div>
+      <div class="Receitas-meta-text">
+        {{ receita.preparation_time }} {{ receita.preparation_time_unit }}
+      </div>
     </div>
     <div class="Receitas-meta Receitas-servings">
       <h3 class="Receitas-meta-title">
         <i class="fas fa-pizza-slice"></i> Porções
       </h3>
-      <div class="Receitas-meta-text"> 
-        {{ receita.servings }} {{ receita.servings_unit }}</div>
+      <div class="Receitas-meta-text">
+        {{ receita.servings }} {{ receita.servings_unit }}
+      </div>
     </div>
   </div>
 
-  <footer class="Receitas-footer">
-    <a
-      class="Receitas-read-more button button-dark button-full-width"
-      href="/Re/3/"
-    >
-      <i class="fas fa-eye"></i>
-      <span>ver mais...</span>
-    </a>
-  </footer>
+  {% if not is_detail_page %}
+    <footer class="Receitas-footer">
+      <a class="Receitas-read-more button button-dark button-full-width"
+         href="/Receitas/{{ receita.id }}/">
+        <i class="fas fa-eye"></i>
+        <span>ver mais...</span>
+      </a>
+    </footer>
+  {% endif %}
+
+  {% if is_detail_page %}
+    <div class="preparation_steps">
+      <h2>Modo de Preparo</h2>
+      <p>{{ receita.preparation_steps|linebreaksbr }}</p>
+    </div>
+  {% endif %}
 </div>
